@@ -1,0 +1,12 @@
+##
+### File managed by Puppet
+###
+DEVICE=<%= interface %>
+ONPARENT=YES
+TYPE=Ethernet
+<% if !ipaddress.empty? and ipaddress.size != 0 %>IPADDR=<%= ipaddress %>
+<% elsif !domain_name.empty? and domain_name.size != 0 %>
+<% begin ipInt = Socket.gethostbyname(domain_name)[3] rescue ipInt=[127][0][0][1] end %>
+IPADDR=<%= "%d.%d.%d.%d" % [ipInt[0], ipInt[1], ipInt[2], ipInt[3]] %>
+<% end -%>
+NETMASK=255.255.255.255
