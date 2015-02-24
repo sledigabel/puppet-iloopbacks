@@ -5,6 +5,10 @@ a simple loopback management module for puppet
 
 TODO
 
+## Dependencies
+
+Requires the ```puppetlabs\stdlib``` module for hash manipulation and validations.
+
 ## Usage:
 ```
 class { 'iloopbacks':
