@@ -28,9 +28,9 @@
 define iloopbacks::loopback ($loops_p){
 
     # checking if the interface name is lo*
-    if $name =~ /^lo\s+/ {
+    if $name =~ /^lo[0-9a-zA-Z]+/ {
         # adding a column after 'lo'
-        $interface = regsubst($name,'^lo(\s+)$','lo:\1','G')
+        $interface = regsubst($name,'^lo([0-9a-zA-Z]+)$','lo:\1','G')
     }
     else{
         fail("The interface ${interface} does not start with lo")
